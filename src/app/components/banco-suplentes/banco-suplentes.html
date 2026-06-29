@@ -1,0 +1,19 @@
+<div class="banco-contenedor">
+  <h3>Banco de Suplentes</h3>
+
+  <ul class="lista-suplentes">
+    <li *ngFor="let suplente of suplentes" class="suplente-item">
+
+      <div class="info-jugador">
+        <span class="dorsal">{{ suplente.numero }}</span>
+        <strong>{{ suplente.apellido }}</strong>
+        <span class="posicion">{{ suplente.posicion }}</span>
+      </div>
+
+      <button (click)="mandarALaCancha(suplente.id)" class="btn-entrar">
+        Entrar
+      </button>
+
+    </li>
+  </ul>
+</div>

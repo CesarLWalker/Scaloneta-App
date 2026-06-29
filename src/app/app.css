@@ -1,0 +1,7 @@
+.pantalla-principal {
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #1a1a1a; /* Un fondo oscuro para que resalte la cancha */
+  min-height: 100vh;
+}

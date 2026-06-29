@@ -1,0 +1,64 @@
+.banco-contenedor {
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  width: 350px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.banco-contenedor h3 {
+  text-align: center;
+  margin-top: 0;
+  color: #333;
+}
+
+.lista-suplentes {
+  list-style: none;
+  padding: 0;
+}
+
+.suplente-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border-left: 5px solid #75aadb; /* Detalle celeste */
+}
+
+.dorsal {
+  font-weight: bold;
+  color: #75aadb;
+  margin-right: 10px;
+}
+
+.posicion {
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.btn-entrar {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-entrar:hover {
+  background-color: #1b5e20;
+}
+
+/* Agrega esto para indicar que los titulares de la cancha son clickeables */
+::ng-deep .jugador-en-cancha {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+::ng-deep .jugador-en-cancha:hover {
+  transform: scale(1.1);
+}
