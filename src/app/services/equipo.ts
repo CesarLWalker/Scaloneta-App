@@ -11,7 +11,7 @@ export class EquipoService {
   }
   // Base de datos temporal (Mock)
   private mockJugadores: Jugador[] = [
-    { id: 1, nombre: 'Emiliano', apellido: 'Martínez', numero: 23, posicion: 'POR', esTitular: true },
+    { id: 1, nombre: 'Emiliano', apellido: 'Martínez', numero: 23, posicion: 'POR', esTitular: true, coordenadaX: 1, coordenadaY: 1 },
     { id: 2, nombre: 'Cristian', apellido: 'Romero', numero: 13, posicion: 'DEF', esTitular: true },
     { id: 3, nombre: 'Lionel', apellido: 'Messi', numero: 10, posicion: 'DEL', esTitular: true },
     { id: 4, nombre: 'Julián', apellido: 'Álvarez', numero: 9, posicion: 'DEL', esTitular: false },
