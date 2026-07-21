@@ -4,13 +4,15 @@
   border: 4px solid white;
   width: 200%;
   max-width: 600px;
-  min-height: 800px; 
+  min-width: 350px; /* NUEVO: Evita que la cancha se haga angosta */
+  min-height: 800px;
 
   /* FLEXBOX PARA APILAR LAS LÍNEAS DE FORMA VERTICAL */
-display: flex;
-flex-direction: column;
-justify-content: space-evenly; /* Separa las 4 líneas a la misma distancia */
-border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly; /* Separa las 4 líneas a la misma distancia */
+  border-radius: 5px;
+  overflow: hidden; /* NUEVO: Evita que algo rompa los bordes */
 }
 
 /* 2. LAS LÍNEAS TÁCTICAS */
@@ -25,6 +27,52 @@ border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: grab; /* Muestra una manito abierta */
+  position: relative; /* CLAVE para el botón de la esquima */
+}
+
+/* El botón de la X */
+.btn-sacar {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background-color: #e53935; /* Rojo */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* Oculto por defecto */
+  transition: opacity 0.2s; /* Animación suave */
+  z-index: 20;
+}
+
+/* Cuando pasas el mouse por el jugador, el botón aparece */
+.jugador-en-cancha:hover .btn-sacar {
+  opacity: 1;
+}
+
+/* Efecto hover sobre el botón mismo */
+.btn-sacar:hover {
+  background-color: #b71c1c; /* Rojo más oscuro */
+  transform: scale(1.1);
+}
+
+/* Esta clase la agrega Angular CDK automáticamente mientras arrastras */
+.cdk-drag-preview {
+  opacity: 0.8; /* Hace al jugador un poco transparente mientras vuela */
+  cursor: grabbing; /* Muestra la manito cerrada */
+}
+
+/* Agrega z-index para asegurarte de que el jugador arrastrado pase por encima de los demás */
+.cdk-drag {
+  z-index: 10;
 }
 
 /* 4. LA CAMISETA ALBICELESTE */
@@ -32,7 +80,7 @@ border-radius: 5px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  
+
   /* Este gradiente dibuja las franjas celestes y blancas */
   background: repeating-linear-gradient(
     90deg,
@@ -41,12 +89,12 @@ border-radius: 5px;
     #ffffff 15px,
     #ffffff 30px
   );
-  
+
   /* Centrar el número adentro de la camiseta */
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   /* Estilo del número */
   font-weight: bold;
   font-size: 1.2rem;
@@ -93,4 +141,20 @@ border-radius: 5px;
 
 .btn-flecha:hover {
   opacity: 1; /* Se iluminan al pasar el mouse */
+}
+
+/* Este es el espacio que queda en la fila mientras tienes al jugador en el aire */
+.cdk-drag-placeholder {
+  opacity: 0.3; /* El jugador se verá como una sombra gris en su lugar original */
+  /* Si prefieres que el espacio quede totalmente invisible, usa opacity: 0; */
+}
+
+/* Anima el jugador cuando lo sueltas para que aterrice suavemente */
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Evita que los demás jugadores de la fila salten de golpe cuando el fantasma entra o sale */
+.linea-tactica.cdk-drop-list-dragging .jugador-en-cancha:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

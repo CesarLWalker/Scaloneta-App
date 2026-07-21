@@ -6,6 +6,9 @@ import { BehaviorSubject, takeUntil } from 'rxjs';
   providedIn: 'root',
 })
 export class EquipoService {
+  actualizarCoordenadas(id: number, arg1: number, arg2: number) {
+    throw new Error('Method not implemented.');
+  }
   // Base de datos temporal (Mock)
   private mockJugadores: Jugador[] = [
     { id: 1, nombre: 'Emiliano', apellido: 'Martínez', numero: 23, posicion: 'POR', esTitular: true },
@@ -65,7 +68,7 @@ export class EquipoService {
     if (direccion === 'izq' && indexActual > 0) {
       const idCompanero = companeros[indexActual - 1].id;
       this.intercambiarEnArray(id, idCompanero);
-    } 
+    }
     // Si movemos a la derecha y no es el último de la línea
     else if (direccion === 'der' && indexActual < companeros.length - 1) {
       const idCompanero = companeros[indexActual + 1].id;
@@ -77,7 +80,7 @@ export class EquipoService {
   private intercambiarEnArray(id1: number, id2: number) {
     const index1 = this.mockJugadores.findIndex(j => j.id === id1);
     const index2 = this.mockJugadores.findIndex(j => j.id === id2);
-    
+
     // Intercambio clásico de variables en JavaScript
     const temp = this.mockJugadores[index1];
     this.mockJugadores[index1] = this.mockJugadores[index2];

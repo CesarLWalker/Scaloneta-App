@@ -1,52 +1,63 @@
+<h1 style="color: white">La Scaloneta</h1>
 <div class="cancha-verde">
-  
+
   <div class="linea-tactica">
-    <div *ngFor="let jugador of delanteros" class="jugador-en-cancha" (click)="mandarAlBanco(jugador.id)">
+    <!--Agregamos cdkDrag y cdkDragBoundary apuntando a la clase de la cancha-->
+    <div *ngFor="let jugador of delanteros" class="jugador-en-cancha"
+      cdkDrag cdkDragBoundary=".cancha-verde"
+      [cdkDragFreeDragPosition]="{ x: jugador.coordenadaX || 0, y: jugador.coordenadaY || 0 }"
+       (cdkDragEnded)="guardarPosicion($event, jugador)">
+
+    <!-- NUEVO: Botón para mandarlo al banco -->
+    <button class="btn-sacar" (click)="mandarAlBanco(jugador.id, $event)">✖</button>
+
       <div class="camiseta">{{ jugador.numero }}</div>
-
-      <div class="controles-horizontales">
-      <button class="btn-flecha" (click)="moverEnLinea(jugador.id, 'izq', $event)">&#9664;</button>
       <span class="apellido">{{ jugador.apellido }}</span>
-      <button class="btn-flecha" (click)="moverEnLinea(jugador.id, 'der', $event)">&#9654;</button>
-    </div>
-    
-    
+
     </div>
   </div>
 
   <div class="linea-tactica">
-    <div *ngFor="let jugador of mediocampistas" class="jugador-en-cancha" (click)="mandarAlBanco(jugador.id)">
+    <div *ngFor="let jugador of mediocampistas" class="jugador-en-cancha"
+      cdkDrag cdkDragBoundary=".cancha-verde"
+      [cdkDragFreeDragPosition]="{ x: jugador.coordenadaX || 0, y: jugador.coordenadaY || 0 }"
+       (cdkDragEnded)="guardarPosicion($event, jugador)">
+
+    <!-- NUEVO: Botón para mandarlo al banco -->
+    <button class="btn-sacar" (click)="mandarAlBanco(jugador.id, $event)">✖</button>
+
       <div class="camiseta">{{ jugador.numero}}</div>
+      <span class="apellido">{{ jugador.apellido }}</span>
 
-      <div class="controles-horizontales">
-      <button class="btn-flecha" (click)="moverEnLinea(jugador.id, 'izq', $event)">&#9664;</button>
-      <span class="apellido">{{ jugador.apellido }}</span>
-      <button class="btn-flecha" (click)="moverEnLinea(jugador.id, 'der', $event)">&#9654;</button>
-    </div>
-    
-    
     </div>
   </div>
-  
+
   <div class="linea-tactica">
-    <div *ngFor="let jugador of defensores" class="jugador-en-cancha" (click)="mandarAlBanco(jugador.id)">
+    <div *ngFor="let jugador of defensores" class="jugador-en-cancha"
+       cdkDrag cdkDragBoundary=".cancha-verde"
+       [cdkDragFreeDragPosition]="{ x: jugador.coordenadaX || 0, y: jugador.coordenadaY || 0 }"
+       (cdkDragEnded)="guardarPosicion($event, jugador)">
+
+    <!-- NUEVO: Botón para mandarlo al banco -->
+    <button class="btn-sacar" (click)="mandarAlBanco(jugador.id, $event)">✖</button>
+
       <div class="camiseta">{{ jugador.numero}}</div>
-      
-      <div class="controles-horizontales">
-      <button class="btn-flecha" (click)="moverEnLinea(jugador.id, 'izq', $event)">&#9664;</button>
       <span class="apellido">{{ jugador.apellido }}</span>
-      <button class="btn-flecha" (click)="moverEnLinea(jugador.id, 'der', $event)">&#9654;</button>
-    </div>
-    
-    
+
     </div>
   </div>
-  
+
   <div class="linea-tactica">
-    <div *ngFor="let jugador of arquero" class="jugador-en-cancha" (click)="mandarAlBanco(jugador.id)">
+    <div *ngFor="let jugador of arquero" class="jugador-en-cancha"
+    cdkDrag cdkDragBoundary=".cancha-verde"
+    [cdkDragFreeDragPosition]="{ x: jugador.coordenadaX || 0, y: jugador.coordenadaY || 0 }"
+       (cdkDragEnded)="guardarPosicion($event, jugador)">
+
+    <!-- NUEVO: Botón para mandarlo al banco -->
+    <button class="btn-sacar" (click)="mandarAlBanco(jugador.id, $event)">✖</button>
       <div class="camiseta arquero">{{ jugador.numero}}</div>
       <span class="apellido">{{ jugador.apellido}}</span>
     </div>
   </div>
-  
+
 </div>

@@ -24,11 +24,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.css",
-              "src/app/app.css",
-              "src/app/components/cancha/cancha.css"
-            ]
+            "styles": ["src/styles.css", "src/app/app.css", "src/app/components/cancha/cancha.css"]
           },
           "configurations": {
             "production": {
@@ -68,6 +64,9 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
